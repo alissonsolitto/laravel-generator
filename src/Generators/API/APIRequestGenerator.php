@@ -24,14 +24,16 @@ class APIRequestGenerator extends BaseGenerator
     {
         $this->commandData = $commandData;
         $this->path = $commandData->config->pathApiRequest;
-        $this->createFileName = 'Create'.$this->commandData->modelName.'APIRequest.php';
-        $this->updateFileName = 'Update'.$this->commandData->modelName.'APIRequest.php';
+        $this->createFileName = $this->commandData->modelName.'APIRequest.php';
+        //$this->createFileName = 'Create'.$this->commandData->modelName.'APIRequest.php';
+        //$this->updateFileName = 'Update'.$this->commandData->modelName.'APIRequest.php';
     }
 
     public function generate()
     {
+        //Gera apenas um arquivo de Request
         $this->generateCreateRequest();
-        $this->generateUpdateRequest();
+        //$this->generateUpdateRequest();
     }
 
     private function generateCreateRequest()

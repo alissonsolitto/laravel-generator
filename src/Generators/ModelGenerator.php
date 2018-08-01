@@ -84,6 +84,8 @@ class ModelGenerator extends BaseGenerator
 
         $templateData = str_replace('$CAST$', implode(','.infy_nl_tab(1, 2), $this->generateCasts()), $templateData);
 
+        $templateData = str_replace('$CUSTOMATTRIBUTES$', implode(','.infy_nl_tab(1, 2), $this->generateCustomAttributes()), $templateData);
+
         $templateData = str_replace(
             '$RELATIONS$',
             fill_template($this->commandData->dynamicVars, implode(PHP_EOL.infy_nl_tab(1, 1), $this->generateRelations())),
@@ -236,6 +238,9 @@ class ModelGenerator extends BaseGenerator
             if (!empty($field->validations)) {
                 $rule = "'".$field->name."' => '".$field->validations."'";
                 $rules[] = $rule;
+            }else{
+                $rule = "'".$field->name."' => 'required'";
+                $rules[] = $rule;
             }
         }
 
@@ -292,6 +297,18 @@ class ModelGenerator extends BaseGenerator
         }
 
         return $casts;
+    }
+
+    private function generateCustomAttributes(){
+        
+        $customAttributes = [];
+
+        foreach ($this->commandData->fields as $field) {
+            $attibute = "'".$field->name."' => '\'".$field->name."\''";
+            $customAttributes[] = $attibute;
+        }
+
+        return $customAttributes;
     }
 
     private function generateRelations()

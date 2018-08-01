@@ -24,14 +24,16 @@ class RequestGenerator extends BaseGenerator
     {
         $this->commandData = $commandData;
         $this->path = $commandData->config->pathRequest;
-        $this->createFileName = 'Create'.$this->commandData->modelName.'Request.php';
-        $this->updateFileName = 'Update'.$this->commandData->modelName.'Request.php';
+        $this->createFileName = $this->commandData->modelName.'Request.php';
+        //$this->createFileName = 'Create'.$this->commandData->modelName.'Request.php';
+        //$this->updateFileName = 'Update'.$this->commandData->modelName.'Request.php';
     }
 
     public function generate()
     {
+        //Gera apenas um arquivo de Request
         $this->generateCreateRequest();
-        $this->generateUpdateRequest();
+        //$this->generateUpdateRequest();
     }
 
     private function generateCreateRequest()
