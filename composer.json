@@ -1,6 +1,6 @@
 {
-    "name": "infyomlabs/laravel-generator",
-    "description": "InfyOm Laravel Generator",
+    "name": "alissonsolitto/laravel-generator",
+    "description": "CLONE 5.4 - InfyOm Laravel Generator",
     "keywords": [
         "laravel",
         "api",
@@ -16,12 +16,7 @@
         "swagger"
     ],
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Mitul Golakiya",
-            "email": "me@mitul.me"
-        }
-    ],
+    "authors": [],
     "require": {
         "php": ">=5.5.9",
         "illuminate/support": "5.0.* || 5.1.* || 5.2.* || 5.3.* || 5.4.* || 5.5.*",
