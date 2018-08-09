@@ -78,7 +78,8 @@ class ScaffoldGeneratorCommand extends BaseCommand
      */
     protected function checkIsThereAnyDataToGenerate()
     {
-        if (count($this->commandData->fields) > 3) {
+        //Números de campos necessários na tabela
+        if (count($this->commandData->fields) > 1) {
             return true;
         }
     }
