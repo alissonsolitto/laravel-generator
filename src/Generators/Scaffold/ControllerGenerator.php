@@ -40,7 +40,7 @@ class ControllerGenerator extends BaseGenerator
             $paginate = $this->commandData->getOption('paginate');
 
             if ($paginate) {
-                $templateData = str_replace('$RENDER_TYPE$', 'paginate('.$paginate.')', $templateData);
+                $templateData = str_replace('$RENDER_TYPE$', 'paginate($pagination)', $templateData);
             } else {
                 $templateData = str_replace('$RENDER_TYPE$', 'all()', $templateData);
             }

@@ -289,11 +289,16 @@ class GeneratorConfig
 
     public function prepareModelNames()
     {
-        $this->mPlural = Str::plural($this->mName);
+        //$this->mPlural = Str::plural($this->mName);
+        
+        //Remover plural 's' no final do nome
+        $this->mPlural = $this->mName;
         $this->mCamel = Str::camel($this->mName);
         $this->mCamelPlural = Str::camel($this->mPlural);
+        
         $this->mSnake = Str::snake($this->mName);
         $this->mSnakePlural = Str::snake($this->mPlural);
+
         $this->mDashed = str_replace('_', '-', Str::snake($this->mSnake));
         $this->mDashedPlural = str_replace('_', '-', Str::snake($this->mSnakePlural));
         $this->mSlash = str_replace('_', '/', Str::snake($this->mSnake));

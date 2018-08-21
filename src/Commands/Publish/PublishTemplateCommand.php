@@ -29,7 +29,7 @@ class PublishTemplateCommand extends PublishBaseCommand
     {
         $this->templatesDir = config(
             'infyom.laravel_generator.path.templates_dir',
-            base_path('resources/infyom/infyom-generator-templates/')
+            base_path('resources/templates/')
         );
 
         if ($this->publishGeneratorTemplates()) {
@@ -44,7 +44,7 @@ class PublishTemplateCommand extends PublishBaseCommand
     {
         $templatesPath = __DIR__.'/../../../templates';
 
-        return $this->publishDirectory($templatesPath, $this->templatesDir, 'infyom-generator-templates');
+        return $this->publishDirectory($templatesPath, $this->templatesDir, 'templates');
     }
 
     /**
@@ -56,7 +56,7 @@ class PublishTemplateCommand extends PublishBaseCommand
 
         $templatesPath = base_path('vendor/alissonsolitto/'.$templateType.'/templates/scaffold');
 
-        return $this->publishDirectory($templatesPath, $this->templatesDir.'/scaffold', 'infyom-generator-templates/scaffold', true);
+        return $this->publishDirectory($templatesPath, $this->templatesDir.'/scaffold', 'templates/scaffold', true);
     }
 
     /**

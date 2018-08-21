@@ -128,9 +128,9 @@ class ModelGenerator extends BaseGenerator
             $docsTemplate = fill_template($this->commandData->dynamicVars, $docsTemplate);
 
             $fillables = '';
-            foreach ($this->commandData->relations as $relation) {
-                $fillables .= ' * @property '.$this->getPHPDocType($relation->type, $relation).PHP_EOL;
-            }
+            // foreach ($this->commandData->relations as $relation) {
+            //     $fillables .= ' * @property '.$this->getPHPDocType($relation->type, $relation).PHP_EOL;
+            // }
             foreach ($this->commandData->fields as $field) {
                 if ($field->isFillable) {
                     $fillables .= ' * @property '.$this->getPHPDocType($field->fieldType).' '.$field->name.PHP_EOL;
@@ -218,12 +218,13 @@ class ModelGenerator extends BaseGenerator
             if (empty($timestamps)) {
                 $replace = infy_nl_tab()."public \$timestamps = false;\n";
             } else {
-                list($created_at, $updated_at) = collect($timestamps)->map(function ($field) {
+                list($created_at, $updated_at, $deleted_at) = collect($timestamps)->map(function ($field) {
                     return !empty($field) ? "'$field'" : 'null';
                 });
 
                 $replace .= infy_nl_tab()."const CREATED_AT = $created_at;";
-                $replace .= infy_nl_tab()."const UPDATED_AT = $updated_at;\n";
+                $replace .= infy_nl_tab()."const UPDATED_AT = $updated_at;";
+                $replace .= infy_nl_tab()."const DELETED_AT = $deleted_at;\n";
             }
         }
 
